@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>ChatGPT4 API Demo</title>
+</head>
+<body>
+    <h1>ChatGPT4 API Demo</h1>
+    <form>
+        <label for="prompt">Prompt:</label>
+        <input type="text" id="prompt" name="prompt"><br><br>
+        <label for="length">Length:</label>
+        <input type="number" id="length" name="length" value="50"><br><br>
+        <button type="button" onclick="sendRequest()">Send</button>
+    </form>
+    <div id="result"></div>
+    <script>
+        function sendRequest() {
+            var prompt = document.getElementById("prompt").value;
+            var length = document.getElementById("length").value;
+            var data = {
+                prompt: prompt,
+                length: parseInt(length)
+            };
+            var xhr = new XMLHttpRequest();
+            xhr.open("POST", "/.netlify/functions/chatgpt4");
+            xhr.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
+            xhr.onload = function() {
+                var result = JSON.parse(this.responseText).completion;
+                document.getElementById("result").innerHTML = result;
+            };
+            xhr.send(JSON.stringify(data));
+        }
+    </script>
+</body>
+</html>

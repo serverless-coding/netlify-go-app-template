@@ -1,0 +1,8 @@
+[build]
+  command = "go build -o ./functions/chatgpt4 ./chatgpt4.go"
+  functions = "functions"
+
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
