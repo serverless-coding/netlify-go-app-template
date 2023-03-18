@@ -1,5 +1,5 @@
 [build]
-  command = "go build -o ./functions/chatgpt4 ./chatgpt4.go"
+  command = "go build -o ./functions/chatgpt4 ./main.go"
   functions = "functions"
 
 [[redirects]]
